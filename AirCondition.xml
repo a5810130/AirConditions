@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AirConditions>
+  <AirCondition>
+    <room>411</room>
+    <unixtime>0</unixtime>
+    <temperature>25</temperature>
+    <humidity>35</humidity>
+  </AirCondition>
+  <AirCondition>
+    <room>411</room>
+    <unixtime>1540404868</unixtime>
+    <temperature>25</temperature>
+    <humidity>35</humidity>
+  </AirCondition>
+  <AirCondition>
+    <room>411</room>
+    <unixtime>1540404873</unixtime>
+    <temperature>25</temperature>
+    <humidity>35</humidity>
+  </AirCondition>
+  <AirCondition>
+    <room>481</room>
+    <unixtime>1540404885</unixtime>
+    <temperature>25</temperature>
+    <humidity>35</humidity>
+  </AirCondition>
+  <AirCondition>
+    <room>481</room>
+    <unixtime>1540405007</unixtime>
+    <temperature>25</temperature>
+    <humidity>35</humidity>
+  </AirCondition>
+  <AirCondition>
+    <room>481</room>
+    <unixtime>12</unixtime>
+    <temperature>25</temperature>
+    <humidity>35</humidity>
+  </AirCondition>
+</AirConditions>
