@@ -45,6 +45,50 @@ class AirCondition
     $xml=simplexml_load_file("http://localhost/AirConditions/Students.xml"); 
     return ($xml->asXML());
   }
+
+  /**
+   * @param string  $name
+   * @param string  $address
+   * @param double  $weight
+   */
+  public function InsertTask($name,$address,$weight)
+  {
+    $xml=simplexml_load_file("http://localhost/AirConditions/DeliveryTasks.xml");
+    if($last = $xml->Task[count($xml)-1])
+        $id = $last->id+1;
+    else $id = 1;
+    $task = $xml->addChild("Task");
+    $task->addChild("id",$id);
+    $task->addChild("name",$name);
+    $task->addChild("address",$address);
+    $task->addChild("weight",$weight);
+    $task->addChild("delivered","False");
+    $doc = new DOMDocument();
+    $doc->preserveWhiteSpace = false;
+    $doc->formatOutput = true;
+    $doc->loadXML($xml->asXML());
+    $doc->save('DeliveryTasks.xml');
+    // return ($xml->asXML());
+  }
+
+  /**
+   * @param int $id
+   */
+  public function TaskDelivered($id)
+  {
+    $xml=simplexml_load_file("http://localhost/AirConditions/DeliveryTasks.xml");
+    foreach ($xml->children() as $item ){
+      if ($item->id==$id)
+          $item->delivered = "True";
+    }
+    $doc = new DOMDocument();
+    $doc->preserveWhiteSpace = false;
+    $doc->formatOutput = true;
+    $doc->loadXML($xml->asXML());
+    $doc->save('DeliveryTasks.xml');
+    // return ($xml->asXML());
+  }
+
 }
 
 $serverUrl = "http://localhost/AirConditions/server.php";
