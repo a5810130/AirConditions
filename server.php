@@ -89,6 +89,14 @@ class AirCondition
     // return ($xml->asXML());
   }
 
+  /**
+   * @return string 
+   */
+  public function GetTask()
+  {
+    $xml=simplexml_load_file("http://localhost/AirConditions/DeliveryTasks.xml");
+    echo $xml->asXML();
+  }  
 }
 
 $serverUrl = "http://localhost/AirConditions/server.php";
