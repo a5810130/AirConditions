@@ -5,11 +5,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 class AirCondition
 {
   /**
-  *  @return object
+  *  @return string
   */
   public function GetAirInfo()
   {
-    $xml=simplexml_load_file("http://localhost/AirCondition/AirCondition.xml");
+    $xml=simplexml_load_file("http://localhost/AirConditions/AirCondition.xml"); 
     return ($xml->asXML());
   }
   
@@ -23,7 +23,7 @@ class AirCondition
   {
 	if(!$unixtime) $unixtime = time();
 	if(!$temperature or !$humidity) return ;
-	$xml=simplexml_load_file("http://localhost/AirCondition/AirCondition.xml");
+	$xml=simplexml_load_file("http://localhost/AirConditions/AirCondition.xml");
 	$aircon = $xml->addChild("AirCondition");
 	$aircon->addChild("room",$room);
 	$aircon->addChild("unixtime",$unixtime);
@@ -36,9 +36,18 @@ class AirCondition
 	$doc->loadXML($xml->asXML());
 	$doc->save('AirCondition.xml');
   }
+
+  /**
+  *  @return string
+  */
+  public function GetStudentInfo()
+  {
+    $xml=simplexml_load_file("http://localhost/AirConditions/Students.xml"); 
+    return ($xml->asXML());
+  }
 }
 
-$serverUrl = "http://localhost/AirCondition/server.php";
+$serverUrl = "http://localhost/AirConditions/server.php";
 $options = [
     'uri' => $serverUrl,
 ];

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Students>
+  <Student>
+    <name>nitikarn seneewong na ayutthaya</name>
+    <id>5801012610130</id>
+    <Hobbies>
+      <Hobbie>badminton</Hobbie>
+      <Hobbie>drawing</Hobbie>
+    </Hobbies>
+  </Student>
+</Students>
