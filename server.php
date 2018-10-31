@@ -90,12 +90,27 @@ class AirCondition
   }
 
   /**
+   * @param string delivered
    * @return string 
    */
-  public function GetTask()
+  public function GetTask($delivered=Null)
   {
     $xml=simplexml_load_file("http://localhost/AirConditions/DeliveryTasks.xml");
-    echo $xml->asXML();
+	if ($delivered!=Null){
+		if ($delivered=="yes"){
+			$filter = "//Task[delivered='True']";
+		}elseif ($delivered=="no"){
+			$filter = "//Task[delivered='False']";
+		}
+		$result = $xml->xpath($filter);
+		$fullXml = '<Tasks>';
+		foreach($result as $xmlElement){
+			$fullXml .= str_replace('<?xml version="1.0"?>', '',$xmlElement->asXML());
+		}
+		$fullXml .= '</Tasks>';
+		$xml=simplexml_load_string($fullXml);
+	}
+    return $xml->asXML();
   }  
 }
 

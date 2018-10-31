@@ -25,6 +25,8 @@ $client = new Zend\Soap\Client('http://localhost/airconditions/server.php?wsdl')
 // $client->TaskDelivered(['id'=>3]);
 
 // GetTask
-$result = $client->GetTask();
+$result = $client->GetTask(['delivered'=>"yes"]);
+echo $result->GetTaskResult;
+$result = $client->GetTask(['delivered'=>"no"]);
 echo $result->GetTaskResult;
 ?>
