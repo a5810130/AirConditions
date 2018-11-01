@@ -9,7 +9,7 @@ class AirCondition
   */
   public function GetAirInfo()
   {
-    $xml=simplexml_load_file("http://localhost/AirConditions/AirCondition.xml"); 
+    $xml=simplexml_load_file("https://soapwebservice.herokuapp.com/AirCondition.xml"); 
     return ($xml->asXML());
   }
   
@@ -23,7 +23,7 @@ class AirCondition
   {
 	if(!$unixtime) $unixtime = time();
 	if(!$temperature or !$humidity) return ;
-	$xml=simplexml_load_file("http://localhost/AirConditions/AirCondition.xml");
+	$xml=simplexml_load_file("https://soapwebservice.herokuapp.com/AirCondition.xml");
 	$aircon = $xml->addChild("AirCondition");
 	$aircon->addChild("room",$room);
 	$aircon->addChild("unixtime",$unixtime);
@@ -42,7 +42,7 @@ class AirCondition
   */
   public function GetStudentInfo()
   {
-    $xml=simplexml_load_file("http://localhost/AirConditions/Students.xml"); 
+    $xml=simplexml_load_file("https://soapwebservice.herokuapp.com/Students.xml"); 
     return ($xml->asXML());
   }
 
@@ -53,7 +53,7 @@ class AirCondition
    */
   public function InsertTask($name,$address,$weight)
   {
-    $xml=simplexml_load_file("http://localhost/AirConditions/DeliveryTasks.xml");
+    $xml=simplexml_load_file("https://soapwebservice.herokuapp.com/DeliveryTasks.xml");
     if($last = $xml->Task[count($xml)-1])
         $id = $last->id+1;
     else $id = 1;
@@ -76,7 +76,7 @@ class AirCondition
    */
   public function TaskDelivered($id)
   {
-    $xml=simplexml_load_file("http://localhost/AirConditions/DeliveryTasks.xml");
+    $xml=simplexml_load_file("https://soapwebservice.herokuapp.com/DeliveryTasks.xml");
     foreach ($xml->children() as $item ){
       if ($item->id==$id)
           $item->delivered = "True";
@@ -95,7 +95,7 @@ class AirCondition
    */
   public function GetTask($delivered=Null)
   {
-    $xml=simplexml_load_file("http://localhost/AirConditions/DeliveryTasks.xml");
+    $xml=simplexml_load_file("https://soapwebservice.herokuapp.com/DeliveryTasks.xml");
 	if ($delivered!=Null){
 		if ($delivered=="yes"){
 			$filter = "//Task[delivered='True']";
@@ -112,9 +112,10 @@ class AirCondition
 	}
     return $xml->asXML();
   }  
+
 }
 
-$serverUrl = "http://localhost/AirConditions/server.php";
+$serverUrl = "https://soapwebservice.herokuapp.com/server.php";
 $options = [
     'uri' => $serverUrl,
 ];
